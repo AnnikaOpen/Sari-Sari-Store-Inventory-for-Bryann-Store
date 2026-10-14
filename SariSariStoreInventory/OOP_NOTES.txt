@@ -1,0 +1,16 @@
+WHERE EACH OOP CONCEPT IS USED (for the defense)
+
+ENCAPSULATION  - Product, Person, SaleItem: private fields + getters/setters.
+INHERITANCE    - Staff extends Person; Customer extends Person;
+                 StaffDAO / CustomerDAO extend BaseDAO.
+ABSTRACTION    - Person (abstract class, abstract getRole()); BaseDAO (abstract class);
+                 Crud<T> and Refreshable (interfaces).
+POLYMORPHISM   - getRole() and toString() behave differently in Staff and Customer;
+                 PersonPanel works with Person and shows both Staff and Customers;
+                 MainFrame reloads any tab through the Refreshable interface.
+
+DATABASE (MySQL via JDBC): DBConnection, DataStore (PRODUCT + login), StaffDAO, CustomerDAO, SaleDAO.
+SaleDAO.checkout() uses a transaction: saves SALE + SALE_ITEM and lowers PRODUCT stock together.
+
+PROCESS FLOW: Login > Products (manage stock) > New Sale (cart, customer, payment, checkout)
+              > Stock goes down > Sales History (report)
